@@ -2,8 +2,8 @@
 // GLOBAL VARS
 
 var force = { // Force default shape or text
-  shape: 2,
-  text: 1
+  shape: false,
+  text: false
 }
 
 var tb3 = { // Roland TB-3
