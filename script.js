@@ -1,7 +1,6 @@
 ///////////////////////////////////////////////
 // GLOBAL VARS
-
-var force = { // Force default shape or text
+var forceView = { // Force default shape or text
   shape: false,
   text: false
 }
@@ -29,7 +28,7 @@ function gotMIDImessage(messageData) {
   ///////////////////////////////////////////////
   // INPUTS LOG
   if(action == 144) {
-    // console.log(bus+', Note: '+note+', Velocity: '+velocity);
+    //console.log(bus+', Note: '+note+', Velocity: '+velocity);
   }
 
   ///////////////////////////////////////////////
@@ -41,23 +40,7 @@ function gotMIDImessage(messageData) {
   ///////////////////////////////////////////////
   // SWITCH SHAPES & TEXT
   if(bus == bus5 && action == 128) {
-    var shape, text;
-    if( force.shape === false ) {
-      shape = Math.floor(Math.random() * 3);
-    }
-    else {
-      shape = force.shape;
-    }
-    if( force.text === false ) {
-      text = Math.floor(Math.random() * 2);
-    }
-    else {
-      text = force.text;
-    }
-    $('[shape]').hide();
-    $('[shape="'+shape+'"]').show();
-    $('[text]').hide();
-    $('[text="'+text+'"]').show();
+    switchView();
   }
 
   ///////////////////////////////////////////////
@@ -199,3 +182,29 @@ function gotMIDImessage(messageData) {
     $('.digits').prepend(num);
   }
 }
+
+function switchView() {
+  var shape, text;
+  if( forceView.shape === false ) {
+    shape = Math.floor(Math.random() * 3);
+  }
+  else {
+    shape = forceView.shape;
+  }
+  if( forceView.text === false ) {
+    text = Math.floor(Math.random() * 2);
+  }
+  else {
+    text = forceView.text;
+  }
+
+  console.log(shape)
+  $('[shape]').hide();
+  $('[shape="'+shape+'"]').show();
+  $('[text]').hide();
+  $('[text="'+text+'"]').show();
+}
+
+$(document).ready(function() {
+  switchView();
+});

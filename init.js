@@ -5,6 +5,7 @@ if (navigator.requestMIDIAccess) {
     sysex: false
   }).then(onMIDISuccess, onMIDIFailure);
 } else {
+  console.log('oijoij')
   console.warn("No MIDI support in your browser")
 }
 
